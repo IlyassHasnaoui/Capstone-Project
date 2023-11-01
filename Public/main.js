@@ -8,43 +8,42 @@ document.addEventListener("DOMContentLoaded", function () {
 function initializeMap() {
     const mapOptions = {
         center: { lat: 40.7128, lng: -74.0060 },
-        zoom: 15,
-    };
+        zoom: 15, };
+
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
     const service = new google.maps.places.PlacesService(map);
 
-    //event listener to the search button
+//event listener to the search button
     document.getElementById("searchButton").addEventListener("click", function () {
-    //user-selected filters
-        const foodType = document.getElementById("foodType").value;
 
-    // Get the user's geolocation
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(function (position) {
-                const userLat = position.coords.latitude;
-                const userLng = position.coords.longitude;
+//user-selected filters
+    const foodType = document.getElementById("foodType").value;
 
-    //type of spot
-                const request = {
-                    location: { lat: userLat, lng: userLng },
-                    radius: parseInt(document.getElementById("radius").value),
-                    types: [foodType], //type of place
-                    minRating: parseFloat(document.getElementById("minRating").value),
-                };
+// Get the user's geolocation
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition(function (position) {
+        const userLat = position.coords.latitude;
+        const userLng = position.coords.longitude;
 
-    //nearby search
-                service.nearbySearch(request, function (results, status) {
-                if (status === google.maps.places.PlacesServiceStatus.OK) {
-    //filtrd results
-                displayResults(results);
-                } else {
-                console.error("Error: " + status);
-                            }
-                     });
-                    });
-                     }
-                });
-                }
+//type of spot
+        const request = {
+        location: { lat: userLat, lng: userLng },
+        radius: parseInt(document.getElementById("radius").value),
+        types: [foodType], //type of place
+        minRating: parseFloat(document.getElementById("minRating").value),};
+
+//nearby search
+        service.nearbySearch(request, function (results, status) {
+        if (status === google.maps.places.PlacesServiceStatus.OK) {
+
+//filtrd results
+        displayResults(results);
+        } else {
+        console.error("Error: " + status);
+    }});
+    });
+}});
+}
 
 
 function displayResults(results) {
