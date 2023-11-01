@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", function () {
     const apiKey = 'AIzaSyBCFu6jCzB4OzkoaMvAMtoKVFi0d0NQYmg';
     const script = document.createElement('script');
@@ -37,7 +36,7 @@ function initializeMap() {
                 service.nearbySearch(request, function (results, status) {
                 if (status === google.maps.places.PlacesServiceStatus.OK) {
     //filtrd results
-                isplayResults(results);
+                displayResults(results);
                 } else {
                 console.error("Error: " + status);
                             }
