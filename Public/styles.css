@@ -1,6 +1,6 @@
 body {
     font-family: Arial, sans-serif;
-    background-color: #bfeaf3;
+    background-color: #a4f4bd;
     margin: 10;
     padding: 0;
 }
@@ -58,29 +58,67 @@ button:hover {
     background-color: #0056b3;
 }
 
+
 #results {
-    margin-top: 20px;
-    background-color: #fff;
+    font-family: Arial, sans-serif;
+    margin: 20px;
+    padding: 20px;
+    background-color: #eeffe3;
+    border: 10px solid #0e9e10;
     border-radius: 5px;
-    padding: 30px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-}
-
-.result {
-    margin: 10px;
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-}
-
-.result h3 {
-    font-size: 1.2em;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 20px;
     color: #333;
-}
-
-.result p {
-    color: #777;
-}
-
+    margin-bottom: 10px;
+  }
+  
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  li {
+    font-size: 16px;
+    margin-bottom: 5px;
+    border-bottom: 1px solid #ddd;
+    padding: 10px 0;
+  }
+  
+  li:last-child {
+    border-bottom: none;
+  }
+  
+  strong {
+    color: #007bff; 
+    font-weight: 700;
+  }
+  
+  .rating {
+    color: #f0ad4e; 
+    font-weight: 700;
+  }
+  
+  .no-results {
+    font-size: 16px;
+    color: #f00; 
+  }
+  
+  #searchButton {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+  }
+  
+  #searchButton:hover {
+    background-color: #0056b3;
+  }
+  
 
 

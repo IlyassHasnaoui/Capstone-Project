@@ -24,11 +24,14 @@ function initializeMap() {
         navigator.geolocation.getCurrentPosition(function (position) {
         const userLat = position.coords.latitude;
         const userLng = position.coords.longitude;
+//conversion
+        const radiusMiles = parseFloat(document.getElementById("radius").value);
+        const radiusMeters = radiusMiles * 1609.34;
 
 //type of spot
         const request = {
         location: { lat: userLat, lng: userLng },
-        radius: parseInt(document.getElementById("radius").value),
+        radius: radiusMeters,
         types: [foodType], //type of place
         minRating: parseFloat(document.getElementById("minRating").value),};
 
