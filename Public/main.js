@@ -5,6 +5,23 @@ document.addEventListener("DOMContentLoaded", function () {
     document.head.appendChild(script);
 });
 
+document.getElementById("saveResultsButton").addEventListener("click", function () {
+    const dataToPost = {
+        name: 'Restaurant Name', 
+        rating: 4
+    };
+
+    axios.post('/save', dataToPost)
+        .then((response) => {
+            console.log('Result saved:', response.data);
+            
+        })
+        .catch((error) => {
+            console.error('Error saving result:', error);
+        });
+});
+
+
 function initializeMap() {
     const mapOptions = {
         center: { lat: 40.7128, lng: -74.0060 },
