@@ -11,6 +11,15 @@ document.getElementById("saveResultsButton").addEventListener("click", function 
         rating: 4
     };
 
+    axios.post('/save', dataToPost)
+    .then((response) => {
+        console.log('Result saved:', response.data);
+        displaySavedResults();
+    })
+    .catch((error) => {
+        console.error('Error saving result:', error);
+    });
+
 function displaySavedResults() {
     const savedResultsList = document.getElementById('savedResultsList');
     savedResultsList.innerHTML = '';
