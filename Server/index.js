@@ -5,24 +5,25 @@ const port = process.env.PORT || 3000;
 
 app.use(express.json());
 
-//store saved results
+//saved results
 const savedResults = [];
 
 app.use(express.static('public'));
+
 app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-//save ressults
+//save results
 app.post('/save', (req, res) => {
-    const newResult = req.body; 
+    const newResult = req.body;
     savedResults.push(newResult);
     res.status(201).send('Result saved successfully');
 });
 
-//retrieve data
+//get data
 app.get('/saved', (req, res) => {
-    res.json(savedResults); 
+    res.json(savedResults);
 });
 
 app.listen(port, () => {

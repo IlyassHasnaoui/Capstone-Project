@@ -120,5 +120,16 @@ button:hover {
     background-color: #0056b3;
   }
   
+  #savedResultsButton {
+    background-color: #34db3f;
+    color: #fff;
+    padding: 10px 200px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease; 
+}
 
-
+  #savedResultsButton:hover {
+    background-color: #99f3b6;
+}

@@ -11,16 +11,34 @@ document.getElementById("saveResultsButton").addEventListener("click", function 
         rating: 4
     };
 
-    axios.post('/save', dataToPost)
+function displaySavedResults() {
+    const savedResultsList = document.getElementById('savedResultsList');
+    savedResultsList.innerHTML = '';
+
+    axios.get('/saved')
         .then((response) => {
-            console.log('Result saved:', response.data);
-            
+            const savedResults = response.data;
+
+            if (savedResults.length === 0) {
+                savedResultsList.innerHTML = 'No saved results found.';
+            } else {
+                savedResultsList.innerHTML = '<h2>Saved Results</h2>';
+                savedResults.forEach((result) => {
+                    const listItem = document.createElement('li');
+                    listItem.innerHTML = `<strong>${result.name}</strong> (Rating: ${result.rating})`;
+                    savedResultsList.appendChild(listItem);
+                });
+            }
         })
         .catch((error) => {
-            console.error('Error saving result:', error);
+            console.error('Error retrieving saved results:', error);
+            savedResultsList.innerHTML = 'Error retrieving saved results.';
         });
-});
+}
 
+document.getElementById('savedResultsButton').addEventListener('click', displaySavedResults);
+
+});
 
 function initializeMap() {
     const mapOptions = {
