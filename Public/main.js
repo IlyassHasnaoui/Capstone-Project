@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", function () {
     script.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBCFu6jCzB4OzkoaMvAMtoKVFi0d0NQYmg&libraries=places&callback=initializeMap`;
     document.head.appendChild(script);
 });
-
+ 
 document.getElementById("saveResultsButton").addEventListener("click", function () {
     const dataToPost = {
         name: 'Restaurant Name', 
@@ -48,13 +48,12 @@ function initializeMap() {
     const map = new google.maps.Map(document.getElementById("map"), mapOptions);
     const service = new google.maps.places.PlacesService(map);
 
-//event listener to the search button
-    document.getElementById("searchButton").addEventListener("click", function () {
+document.getElementById("searchButton").addEventListener("click", function () {
 
 //user-selected filters
     const foodType = document.getElementById("foodType").value;
 
-// Get the user's geolocation
+//to get the user's geolocation
     if (navigator.geolocation) {
         navigator.geolocation.getCurrentPosition(function (position) {
         const userLat = position.coords.latitude;
@@ -82,7 +81,6 @@ function initializeMap() {
     });
 }});
 }
-
 
 function displayResults(results) {
     const resultsContainer = document.getElementById("results");
