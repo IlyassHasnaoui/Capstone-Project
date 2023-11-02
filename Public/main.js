@@ -6,19 +6,30 @@ document.addEventListener("DOMContentLoaded", function () {
 });
  
 document.getElementById("saveResultsButton").addEventListener("click", function () {
-    const dataToPost = {
-        name: 'Restaurant Name', 
-        rating: 4
-    };
+    if (searchResults.length > 0) {
+    
+        const resultsToSave = [];
+        for (let i = 0; i < searchResults.length; i++) {
+            resultsToSave.push({
+                name: searchResults[i].name,
+                rating: searchResults[i].rating,
+            });
+        }
 
-    axios.post('/save', dataToPost)
-    .then((response) => {
-        console.log('Result saved:', response.data);
-        displaySavedResults();
-    })
-    .catch((error) => {
-        console.error('Error saving result:', error);
-    });
+        axios.post('/save', resultsToSave)
+            .then((response) => {
+                console.log('Results saved:', response.data);
+                displaySavedResults();
+            })
+            .catch((error) => {
+                console.error('Error saving results:', error);
+            });
+    } else {
+        console.log('No search results to save.');
+    }
+});
+
+    
 
 function displaySavedResults() {
     const savedResultsList = document.getElementById('savedResultsList');
@@ -47,7 +58,7 @@ function displaySavedResults() {
 
 document.getElementById('savedResultsButton').addEventListener('click', displaySavedResults);
 
-});
+
 
 function initializeMap() {
     const mapOptions = {
