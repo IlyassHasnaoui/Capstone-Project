@@ -56,10 +56,11 @@ function displaySavedResults() {
     axios.get('/saved')
         .then((response) => {
             const savedResults = response.data;
-
+console.log(savedResults)
             if (savedResults.length === 0) {
                 savedResultsList.innerHTML = 'No saved results found.';
             } else {
+
                 savedResultsList.innerHTML = '<h2>Saved Results</h2>';
                 savedResults.forEach((result) => {
                     const listItem = document.createElement('li');

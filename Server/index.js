@@ -20,13 +20,16 @@ app.get('/', (req, res) => {
 //save results
 app.post('/save', (req, res) => {
     const newResult = req.body;
-    savedResults.push(newResult);
+    for (let i = 0; i < newResult.length; i++) {
+        savedResults.push(newResult[i])
+    }
     res.status(201).send('Result saved successfully');
 });
 
 //get data
 app.get('/saved', (req, res) => {
     res.json(savedResults);
+    console.log(savedResults)
 });
 
 app.listen(port, () => {
